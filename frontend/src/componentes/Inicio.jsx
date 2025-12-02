@@ -1,17 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import ChatBot from "./ChatBot"
 
 export default function Inicio() {
   return (
     <section className="card">
-      <h1>¿Qué deseas hacer?</h1>
-      <p style={{ color: "#9ca3af" }}>
-        Elige entre alimentar al chatbot con nuevas preguntas/respuestas o conversar con él.
+      <h1>Chat Publico</h1>
+      <p style={{ color: "#9ca3af", marginBottom:16 }}>
+         Puedes conversar libremente con el chatbot. Si deseas administrar la
+        base de conocimiento (crear, editar o eliminar preguntas), inicia
+        sesión usando los botones de la parte superior.
       </p>
-      <div className="row" style={{ marginTop: 16 }}>
-        <Link to="/alimentar" className="btn">Alimentar con preguntas</Link>
-        <Link to="/chat" className="btn secondary">Interactuar con el chatbot</Link>
-      </div>
-    </section>
+      <ChatBot/>
+      </section>
   );
 }

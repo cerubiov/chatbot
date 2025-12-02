@@ -1,32 +1,42 @@
 import React from "react";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route,  Navigate } from "react-router-dom";
 import Inicio from "./componentes/Inicio";
-import ChatBot from "./componentes/ChatBot";
 import FormularioAdmin from "./componentes/FormularioAdmin";
+import Login from "./componentes/Login";
+import Registro from "./componentes/Registro";
+import NavBar from "./componentes/NavBar";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import "./estilos/principal.css";
+
+function RutaPrivada ({children}){
+  const {isAutenticated} = useAuth()
+  if(!isAutenticated){
+    return <Navigate to="/login" replace />
+  }
+  return children
+}
 
 export default function App() {
   return (
-    <div className="app">
-      <header className="topbar">
-        <Link to="/" className="brand">Chatbot MERN</Link>
-        <nav className="nav">
-          <Link to="/alimentar">Alimentar</Link>
-        </nav>
-          <Link to="/chat">Chatear</Link>
-      </header>
- 
-      <main className="content">
-        <Routes>
-          <Route path="/" element={<Inicio />} />
-          <Route path="/alimentar" element={<FormularioAdmin />} />
-          <Route path="/chat" element={<ChatBot />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </main>
-
-      <footer className="footer">© {new Date().getFullYear()} Emily's</footer>
+    <AuthProvider>
       
-    </div>
+          <NavBar />
+          <main className="contenido">
+            <Routes>
+              <Route path="/" element={<Inicio />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/registro" element={<Registro />} />
+              <Route
+                path="/alimentar"
+                element={
+                  <RutaPrivada>
+                    <FormularioAdmin />
+                  </RutaPrivada>
+                }
+              />
+            </Routes>
+          </main>
+        
+    </AuthProvider>
   );
 }
