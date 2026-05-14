@@ -1,5 +1,5 @@
-import React  from "react";
-import { NavLink, useNavigate  } from "react-router-dom";
+import React from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { setAuthToken } from "../services/api";
 
@@ -22,11 +22,15 @@ export default function NavBar() {
 
   return (
     <header className="topbar">
-      <div className="logo" style={{ fontWeight: 600 }}>
+      <div className="logo" style={{ fontWeight: 600, cursor:"pointer" }}
+        onClick={() => navigate("/")}
+      >
         Chatbot MERN
       </div>
+
       <nav className="nav" style={{ display: "flex", alignItems: "center" }}>
-        <NavLink to="/" style={linkStyle}>
+        {/* CAMBIO: ahora Chat va a /chatPublico */}
+        <NavLink to="/chatPublico" style={linkStyle}>
           Chat
         </NavLink>
 
@@ -41,6 +45,7 @@ export default function NavBar() {
             <NavLink to="/login" style={linkStyle}>
               Iniciar sesión
             </NavLink>
+
             <NavLink to="/registro" style={linkStyle}>
               Registrarse
             </NavLink>
@@ -52,6 +57,7 @@ export default function NavBar() {
             <span style={{ marginLeft: 16, color: "#9ca3af" }}>
               Hola, {user?.nombre}
             </span>
+
             <button
               type="button"
               onClick={handleLogout}

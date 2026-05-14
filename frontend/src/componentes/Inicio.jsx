@@ -1,16 +1,30 @@
-import React from "react";
-import ChatBot from "./ChatBot"
+
+import {useNavigate} from "react-router-dom"
 
 export default function Inicio() {
+  const navigate = useNavigate()
+  
   return (
-    <section className="card">
-      <h1>Chat Publico</h1>
-      <p style={{ color: "#9ca3af", marginBottom:16 }}>
-         Puedes conversar libremente con el chatbot. Si deseas administrar la
-        base de conocimiento (crear, editar o eliminar preguntas), inicia
-        sesión usando los botones de la parte superior.
-      </p>
-      <ChatBot/>
-      </section>
+    
+    <div className="inicio-container">
+      
+      <img src="/img/fondo.png" alt="Inicio ChatBot MERN" className="fondo-inicio"/>
+
+      <button className="boton-img boton-chat" onClick={() => navigate("/chatPublico")}>
+      <img src="/img/chatear.png" alt="Chatear"/>
+      </button>
+
+      <button className="boton-img boton-login" onClick={() => navigate("/Login")}>
+      <img src="/img/iniciar.png" alt="Login"/>
+      </button>
+      
+     < button className="boton-img boton-registro" onClick={() => navigate("/registro")}>
+      <img src="/img/registrarse.png" alt="Registro"/>
+      </button>
+
+    
+    </div>
+    
   );
+  
 }

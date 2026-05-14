@@ -95,3 +95,59 @@ body {
   color:var(--muted);
   text-align:center;
 }
+
+.inicio-container{
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 auto;
+  margin: 40px auto;
+}
+
+.contenido{
+  padding: 0;
+  max-width: none;
+  width: 100%
+}
+.fondo-inicio{
+  width: 100%;
+  display: block;
+  border-radius: 16px;
+}
+
+.boton-img{
+  position: absolute;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+}
+
+.boton-img img{
+  width: 100%;
+  display: block;
+  
+}
+.boton-img:hover{
+  transform: scale(1.04);
+  filter: brightness(1.15);
+}
+
+.boton-chat{
+  left: 9.5%;
+  top:80.7%;
+  width: 25%;  
+}
+
+.boton-login{
+  left: 38.4%;
+  top:80.7%;
+  width: 24%;  
+}
+
+.boton-registro{
+  left: 67.6%;
+  top:80.7%;
+  width: 24%;  
+}
